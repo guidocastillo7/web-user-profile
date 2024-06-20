@@ -1,31 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <div class="container text-center">
-        <div class="row align-items-start">
-          <div class="col">
-            <a href="/admin"><h4>Admin</h4></a>
-          </div>
-          <div class="col">
-            <h1>Feed</h1>
-          </div>
-          <div class="col">
-            <a href="{% url 'cerrarSesion' %}"><h4>Cerrar Sesión</h4></a>
-          </div>
+
+<nav class="navbar bg-body-tertiary fixed-top" data-bs-theme="dark">
+    <div class="container-fluid">
+      <h4 style="color: aqua;">Feed</h4>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/perfil">Perfil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/admin">Admin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/cerrarSesion">Cerrar Sesion</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </nav>
+
+<br>
+<br>
+<br>
+<br>
 
 
+    <form action="{% url 'publicar' %}" method="post">
+        {% csrf_token %}
+    <div style="width: 40%; margin: auto;" class="input-group">
+        <img src="{{img.url}}" class="rounded input-group-text" style="width: 12.5%;">
+        <textarea name="contenido" class="form-control" aria-label="With textarea" placeholder="Que quieres publicar?"></textarea>
+        <button type="submit" class="btn btn-success">Publicar</button>
+    </div>
+    </form>
+
+
+<br>
+<br>
+
+    {% for i in publi %}
     <div style="width: 40%; margin: auto;" class="card">
         <div class="card-header">
-          Usuario
+          @{{i.autor}}
         </div>
         <div class="card-body">
           <blockquote class="blockquote mb-0">
-            <p>Publicacion probando el espacio que me da el div pa ver si cabe todo.</p>
+            <p>{{i.contenido}}</p>
             
           </blockquote>
         </div>
-      </div>
+    </div>
+<br>
+    {% endfor %}
 
 
 
