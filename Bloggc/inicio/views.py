@@ -6,6 +6,7 @@ from usuario.models import Usuario
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from PIL import Image
+from feed.models import Publicacion
 
 # Create your views here.
 
@@ -125,7 +126,6 @@ def perfil(request):
     email = request.user.email
     nombre = request.user.first_name
     apellido = request.user.last_name
-
     
     try:
         persona = Usuario.objects.get(usuario= request.user)
@@ -136,6 +136,15 @@ def perfil(request):
     except:
         #Pongo esto pa q lo obligue a completar su perfil y no se vea sin datos
         return redirect('/editarPerfil')
+    
+    
+    #Aqui cargo las publicaciones en caso de tener
+    try:
+        publi = Publicacion.objects.filter(autor= request.user)
+        
+    except:
+        pass
+
 
     context = {
         'username':username,
@@ -144,7 +153,8 @@ def perfil(request):
         'apellido':apellido,
         'pais':pais,
         'fecha':fecha_nacimiento,
-        'imagen':imagen
+        'imagen':imagen,
+        'publi':publi
     }
 
     return render(request, 'perfil.html', context)
@@ -152,10 +162,6 @@ def perfil(request):
 
 @login_required(login_url='/')
 def editarPerfil(request):
-    '''Quede aqui en terminar el formulario pa q haga el chequeo
-    del username q ya existe, terminar de configurar lo de la imagen,
-    q cuando no seleccione imagen no me salga error'''
-
 
     try:
         persona = Usuario.objects.get(usuario= request.user)
@@ -290,3 +296,21 @@ def editarPerfil(request):
 
 
     return render(request, 'editarPerfil.html', context)
+
+
+@login_required(login_url='/')
+def publicacion(request, publi_id):
+
+    '''Arreglar para que un usuario solo pueda eliminar sus publicaciones'''
+
+    pbl = Publicacion.objects.get(pk= publi_id)
+
+    if request.method == 'POST':
+        pbl.delete()
+        
+        return redirect('/perfil')
+
+    context = {
+        'pbl':pbl
+    }
+    return render(request, 'publicacion.html', context)
