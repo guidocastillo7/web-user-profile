@@ -37,8 +37,8 @@
 
     <form action="{% url 'publicar' %}" method="post">
         {% csrf_token %}
-    <div style="width: 40%; margin: auto;" class="input-group">
-        <img src="{{img.url}}" class="rounded input-group-text" style="width: 12.5%;">
+    <div style="width: 40%; margin: auto;" class="input-group mb-3">
+        <a class="input-group" href="/perfil"><img src="{{img.url}}" class="rounded input-group-text" style="width: 12.5%;"></a>
         <textarea name="contenido" class="form-control" aria-label="With textarea" placeholder="Que quieres publicar?"></textarea>
         <button type="submit" class="btn btn-success">Publicar</button>
     </div>
