@@ -4,9 +4,9 @@ Web App con estilo de una red social sencilla.
 
 ## 🖼️ Capturas
 
-<img src="screenshots/blog_capture.png" style="height: 25%; width: 25%;"/>
-<img src="screenshots/blog_capture2.png" style="height: 25%; width: 25%;"/>
-<img src="screenshots/blog_capture3.png" style="height: 25%; width: 25%;"/>
+<img src="screenshots/blog_capture.png" style="height: 40%; width: 40%;"/>
+<img src="screenshots/blog_capture2.png" style="height: 40%; width: 40%;"/>
+<img src="screenshots/blog_capture3.png" style="height: 40%; width: 40%;"/>
 
 ## 📋 Características
 
