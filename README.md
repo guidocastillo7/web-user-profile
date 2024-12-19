@@ -1,14 +1,24 @@
-# Web creada con Django
+# Web User Profile 👤
 
-Página web para hacer CRUD en la cual:
+Web App con estilo de una red social sencilla.
 
-1. Un usuario puede iniciar sesión.
-2. Crear un usuario nuevo.
-3. Ver tu perfil con tu foto.
-4. Actualizar datos de tu usuario.
-5. Crear una publicacion.
-6. Ver el feed con las publicaciones de los usuarios.
-7. Eliminar tus publicaciones.
+## 🖼️ Capturas
 
+<img src="screenshots/blog_capture.png" style="height: 25%; width: 25%;"/>
+<img src="screenshots/blog_capture2.png" style="height: 25%; width: 25%;"/>
+<img src="screenshots/blog_capture3.png" style="height: 25%; width: 25%;"/>
 
-La página aun esta en desarrollo para agregarle nuevas funciones.
+## 📋 Características
+
+- Un usuario puede registrarse e iniciar sesión.
+- Ver tu perfil con tus datos y foto.
+- Actualizar datos de tu usuario.
+- Crear una publicacion.
+- Ver el feed con las publicaciones de los usuarios.
+- Eliminar tus publicaciones.
+
+## 🛠️ Tecnologías Utilizadas
+
+- Python
+- Django
+- Bootstrap
